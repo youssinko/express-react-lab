@@ -9,11 +9,45 @@ app.set("view engine" , "jsx")
 app.engine("jsx" ,reactViews.createEngine())
 //app.engine is creating the engine from react 
 
+app.use((req, res, next)=>{
+console.log("I'm running for all routes")
+console.log("1.middleware")
+next()
+})
+//next function is need to run the rest of the code
+app.use(express.urlencoded({extended:false}))
 app.get("/fruits", (req, res) => {
 //   res.send(fruits)
 res.render("Index",{fruits})
 })
-
+app.get('/fruits/new',(req,res)=>{
+  res.render('New')
+})
+app.post('/fruits' ,(req, res)=>{
+  console.log(req.body)
+  if (req.body.readyToEat === 'on'){
+    req.body.readyToEat = true
+  }else{
+    req.body.readyToEat = false
+  }
+  fruits.push(req.body)
+  //adding data inserted in the form to the array
+  console.log(fruits)
+  //redirecting back to the home page
+  res.redirect("/fruits")
+})
+app.get('/vegetables/new',(req,res)=>{
+  res.render('VegNew')
+})
+app.post('/vegetables',(req,res)=>{
+  if (req.body.readyToEat === 'on'){
+    req.body.readyToEat = true
+  }else{
+    req.body.readyToEat = false
+  }
+  vegetables.push(req.body)
+  res.redirect('/vegetables')
+})
 app.get("/fruits/:indexOfFruit", (req, res) => {
 //   res.send(fruits[req.params.indexOfFruit])
 res.render("Show", fruits[req.params.indexOfFruit])

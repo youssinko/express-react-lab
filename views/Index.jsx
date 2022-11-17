@@ -7,6 +7,9 @@ const React = require('react');
           return (
                   <div>
                       <h1>Fruits Index Page</h1>
+                      <nav>
+                        <a href="/fruits/new">Create fruit</a>
+                      </nav>
                       <ul>
                           {fruits.map((fruit, i) => {
                               return (
