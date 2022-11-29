@@ -1,18 +1,16 @@
-const fruits = [
+const mongoose = require('mongoose')
+//create blueprint /schema
+const fruitSchema = new mongoose.Schema(
     {
-        name:'apple',
-        color: 'red',
-        readyToEat: true
+        name: { type: String, required: true },
+        color: { type: String, required: true },
+        readyToEat: Boolean
     },
     {
-        name:'pear',
-        color: 'green',
-        readyToEat: false
-    },
-    {
-        name:'banana',
-        color: 'yellow',
-        readyToEat: true
+        timestamps: true
     }
-  ];
-  module.exports = fruits
+)
+
+
+const Fruit = mongoose.model('fruit', fruitSchema)
+module.exports = Fruit

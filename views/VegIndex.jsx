@@ -10,7 +10,7 @@ class VegIndex extends React.Component{
                         return (
                             <li key= {i}>
                                 The{' '}
-                                <a href={`/vegetables/${i}`}>
+                                <a href={`/vegetables/${vegetables._id}`}>
                                     {vegetables.name}
                                 </a>{' '}
                                 is {vegetables.color} <br></br>

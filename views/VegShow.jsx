@@ -3,7 +3,7 @@ class VegShow extends React.Component {
     render() {
         // const fruit = this.props.fruit
         //if u use above variable then use (fruit.name) and fruit.color in line 11
-        const {name, color, readyToEat} = this.props
+        const {name, color, readyToEat} = this.props.vegetables
         //props is the main thing in react 
         return (
             <div>

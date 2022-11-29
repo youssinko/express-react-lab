@@ -1,30 +1,16 @@
-const vegetables = [
+const mongoose = require('mongoose')
+
+const vegetableSchema = new mongoose.Schema(
     {
-        name:'potato',
-        color: 'brown',
-        readyToEat: true
+        name: { type: String, required: true },
+        color: { type: String, required: true },
+        readyToEat: Boolean
     },
     {
-        name:'zucchini',
-        color: 'green',
-        readyToEat: false
-    },
-    {
-        name:'corn',
-        color: 'yellow',
-        readyToEat: true
+        timeStamps: true
     }
-    ,
-    {
-        name:'eggplant',
-        color: 'purple',
-        readyToEat: true
-    }
-    ,
-    {
-        name:'pepper',
-        color: 'red',
-        readyToEat: true
-    }
-  ];
-  module.exports = vegetables
+)
+
+
+const Vegetables = mongoose.model('vegetables', vegetableSchema)
+module.exports = Vegetables
